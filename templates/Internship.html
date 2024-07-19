@@ -1,0 +1,184 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spam Detector</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #messageInput {
+      width: 300px;
+      padding: 5px;
+    }
+
+    #submitButton {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    #resultPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #closeButton {
+      cursor: pointer;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <label for="messageInput">Enter Message:</label>
+  <input type="text" id="messageInput" />
+
+  <button onclick="checkForSpam()" id="submitButton">Submit</button>
+
+  <div id="resultPopup">
+    <span id="closeButton" onclick="closePopup()">&times;</span>
+    <p>This message is classified as <strong id="popupResult"></strong>.</p>
+  </div>
+
+  <script>
+    function checkForSpam() {
+      // Get the input message
+      var message = document.getElementById("messageInput").value;
+
+      // Perform some condition to check if the message is spam
+      var isSpam = message.toLowerCase().includes("spam");
+
+      // Display the result in the popup
+      var popupResult = document.getElementById("popupResult");
+      if (isSpam) {
+        popupResult.textContent = "SPAM";
+        document.getElementById("resultPopup").style.backgroundColor =
+          "#ff9999";
+      } else {
+        popupResult.textContent = "Not Spam";
+        document.getElementById("resultPopup").style.backgroundColor =
+          "#99ff99";
+      }
+
+      // Show the popup
+      document.getElementById("resultPopup").style.display = "block";
+    }
+
+    function closePopup() {
+      // Close the popup
+      document.getElementById("resultPopup").style.display = "none";
+    }
+  </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="result">
+    Enter Message: <input type="text" name="message">
+    <button name="submit" value="Submit">Submit</button>
+    {{prediction}}
+  </form>
+</body>
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Email Spam Detection</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2 class="mt-3 mb-4">Email Spam Detection</h2>
+
+    <form id="spamDetectionForm" method="post" action="{% url 'result' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="email">Email Content:</label>
+        <textarea class="form-control" id="email" rows="5" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Detect Spam</button>
+    </form>
+
+    <!-- <div class="alert alert-primary" role="alert">
+      {{prediction}}
+    </div> -->
+
+    <!-- <div class="result" id="result"></div> -->
+
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script>
+    function detectSpam() {
+      // Add your spam detection logic here
+      var emailContent = document.getElementById("email").value;
+
+      // Dummy logic: Check if the email contains the word "spam"
+      var isSpam = emailContent.toLowerCase().includes("spam");
+
+      // Display result
+      //   var resultElement = document.getElementById("result");
+      //   resultElement.innerHTML = isSpam ? '<div class="alert alert-danger" role="alert">This email is detected as spam.</div>' : '<div class="alert alert-success" role="alert">This email is not spam.</div>';
+    }
+  </script>
+
+</body>
+
+</html>

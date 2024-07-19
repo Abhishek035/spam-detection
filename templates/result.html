@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Email Spam Detection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="mt-3 mb-4">Email Spam Detection</h2>
+
+        <form id="spamDetectionForm" method="post" action="{% url 'result' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email Content:</label>
+                <textarea class="form-control" id="email" rows="5" name="message" required>{{message}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Detect Spam</button>
+        </form>
+        <br>
+        <div class="alert alert-primary" role="alert">
+            {{prediction}}
+        </div>
+
+        <!-- <div class="result" id="result"></div> -->
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function detectSpam() {
+            // Add your spam detection logic here
+            var emailContent = document.getElementById("email").value;
+
+            // Dummy logic: Check if the email contains the word "spam"
+            var isSpam = emailContent.toLowerCase().includes("spam");
+
+            // Display result
+            //   var resultElement = document.getElementById("result");
+            //   resultElement.innerHTML = isSpam ? '<div class="alert alert-danger" role="alert">This email is detected as spam.</div>' : '<div class="alert alert-success" role="alert">This email is not spam.</div>';
+        }
+    </script>
+
+</body>
+
+</html>
